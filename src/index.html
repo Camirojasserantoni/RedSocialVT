@@ -1,12 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <title>Social Network</title>
 </head>
 <body>
+
+  <div id="root">
+    <header id="init" class="header"> 
+      <img class="tittle1" alt="" src="img/logo-boceto.png">
+    </header>
+
+    <div class="mainMenu">
+      <div id = "autentication" class="autentication">
+        <input id="emailLogIn" class="inputText" type="text" placeholder="Ingresa tu Correo">
+        <input id="passwordLogIn" class="inputText" type="password" placeholder="Ingresa tu Contraseña">
+        <button id="login" class="btn">Ingresar</button>
+      </div>
+
+      <div class="singIn">
+        <p>¿Eres nuevo/a?</p> 
+        <button id="idGoogle">Continuar con Google</button>
+        <button id="register" class="btn">Registrate</button>
+        <p>¿Olvidaste tu contraseña?</p> <a href="#">Recupérala</a>
+      </div> 
+      <div class="signUp">
+        <input >
+        </div>
+
+    
+    </div>  
+  </div>
+  <footer>
+  </footer> 
+
   <script type="module" src="main.js"></script>
 </body>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-analytics.js"></script>
+  
+   
 </html>

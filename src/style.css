@@ -1,0 +1,39 @@
+* {   
+  border: 0;
+  box-sizing: border-box;   
+}
+
+body{
+  background-color: rgb(40, 40, 40);
+}
+#root{
+  background-image: url("img/sketchbook.png");
+  background-repeat: no-repeat;
+  max-width: 960px;
+  margin: auto;
+  padding: 10px;
+  text-align: center;
+  background-size: cover;     
+}
+.header{
+  padding: 50px;
+  margin: 50px;
+}
+
+.tittle1{
+  width: 60%;
+}
+
+.mainMenu{
+align-items: center;
+
+}
+
+
+@media (max-width: 600px) {
+  
+  .tittle1{
+    width: 70%;
+  }
+  
+}
