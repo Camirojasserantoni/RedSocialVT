@@ -16,9 +16,17 @@
 
     <div class="mainMenu">
       <div id = "autentication" class="autentication">
+        <p>Inicia Sesion aqui</p>
         <input id="emailLogIn" class="inputText" type="text" placeholder="Ingresa tu Correo">
         <input id="passwordLogIn" class="inputText" type="password" placeholder="Ingresa tu Contraseña">
         <button id="login" class="btn">Ingresar</button>
+        
+        
+        <div id="contenido">
+        
+
+        </div>
+        <h1 id="logState"></h1> 
       </div>
 
       <div class="singIn">
@@ -28,8 +36,11 @@
         <p>¿Olvidaste tu contraseña?</p> <a href="#">Recupérala</a>
       </div> 
       <div class="signUp">
-        <input >
-        </div>
+        <p> Registrate aqui</p>
+        <input id="emailRegister" type="email" placeholder="Ingrese su email">
+        <input id="passwordRegister"   type="password" placeholder="Ingrese su contraseña">
+        <button id="btnregister">Enviar</button>
+      </div>
 
     
     </div>  
@@ -37,14 +48,39 @@
   <footer>
   </footer> 
 
-  <script type="module" src="main.js"></script>
-</body>
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  
+   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
 
   <!-- TODO: Add SDKs for Firebase products that you want to use
        https://firebase.google.com/docs/web/setup#available-libraries -->
   <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-analytics.js"></script>
+
+  <script>
+    const fireInit = () => {
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: 'AIzaSyBsLKIQsSJxJkMDZTVvABXToT7ftLbOqWc',
+      authDomain: 'sketchbook-bcd7a.firebaseapp.com',
+      databaseURL: 'https://sketchbook-bcd7a.firebaseio.com',
+      projectId: 'sketchbook-bcd7a',
+      storageBucket: 'sketchbook-bcd7a.appspot.com',
+      messagingSenderId: '491735262369',
+      appId: '1:491735262369:web:95d163e333e60af871bce0',
+      measurementId: 'G-S16NW4NF64',
+    };
   
-   
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  };
+  fireInit();
+  </script>
+  <!--End of Firebase Links-->
+  
+
+  <script type="module" src="index.js"></script>
+  
+</body>
 </html>

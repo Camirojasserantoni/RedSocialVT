@@ -1,6 +1,6 @@
 
 
-export const fireInit = () => {
+/* export const fireInit = () => {
   // Your web app's Firebase configuration
   const firebaseConfig = {
     apiKey: 'AIzaSyBsLKIQsSJxJkMDZTVvABXToT7ftLbOqWc',
@@ -16,4 +16,4 @@ export const fireInit = () => {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
-};
+}; */

@@ -1,5 +1,5 @@
-// Este es el punto de entrada de tu aplicacion
+//  aqui van las vistas
 
-import { myFunction } from './lib/index.js';
+// import { myFunction } from './lib/index.js';
 
-myFunction();
+// myFunction();
