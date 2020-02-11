@@ -7,7 +7,7 @@ export function register() {
   const passwordR = document.getElementById('passwordRegister').value;
   firebase.auth().createUserWithEmailAndPassword(emailR, passwordR)
     .then(() => {
-      verified()
+      verified();
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -28,26 +28,19 @@ export function logIn() {
       alert('no pudiste iniciar sesion, revisa tu nombre de usuario y/o contraseña');
     });
 }
-//  if login permit close session
-function showContent() {
-  const showing = document.getElementById('contenido');
-  showing.innerHTML = `
-  <p> Bienvenido(a)! </p> 
-  <button id="closing"> Cerrar Sesion </button>
-  `;
-  document.getElementById('closing').addEventListener('click', closingSesion);
-}
+
 
 // Observer state
 export function stateObserved() {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       console.log('existe usuario activo');
-      showContent();
+      showContent(user);
       const displayName = user.displayName;
       const email = user.email;
       console.log(email);
       const emailVerified = user.emailVerified;
+      console.log(user.emailVerified);
       const photoURL = user.photoURL;
       const isAnonymous = user.isAnonymous;
       const uid = user.uid;
@@ -66,6 +59,18 @@ export function stateObserved() {
   });
 }
 stateObserved();
+
+//  if login permit close session
+function showContent(user) {
+  const showing = document.getElementById('contenido');
+  if(user.emailVerified){
+    showing.innerHTML = `
+    <p> Bienvenido(a)! </p> 
+    <button id="closing"> Cerrar Sesion </button>
+    `;
+  document.getElementById('closing').addEventListener('click', closingSesion);
+  }
+}
 
 // Sign Out
 export function closingSesion() {
