@@ -1,7 +1,27 @@
 // funcionalidad solo exporta funciones
 
-// Register a new user
+// verify email user
+function verified() {
+  const user = firebase.auth().currentUser;
+  user.sendEmailVerification().then(() => {
+    alert('Revisa tu correo para que puedas ingresar satisfactoriamente');
+  }).catch(() => {
+    alert('correo de verificación no enviado');
+  });
+}
 
+// function Sign Out
+function closingSesion() {
+  firebase.auth().signOut()
+    .then(() => {
+      alert('cerrando sesion...');
+    })
+    .catch(() => {
+      console.log(error);
+    });
+}
+
+// Register a new user
 export function register() {
   const emailR = document.getElementById('emailRegister').value;
   const passwordR = document.getElementById('passwordRegister').value;
@@ -9,10 +29,8 @@ export function register() {
     .then(() => {
       verified();
     })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      alert(errorMessage);
+    .catch(() => {
+      alert('el correo o la contraseña no es valida( la contraseña debe tener 6 caracteres o más)');
     });
 }
 
@@ -21,74 +39,53 @@ export function logIn() {
   const emailLog = document.getElementById('emailLogIn').value;
   const passLog = document.getElementById('passwordLogIn').value;
   firebase.auth().signInWithEmailAndPassword(emailLog, passLog)
-    .then((result) => {
+    .then(() => {
       alert('Iniciaste sesion exitosamente!');
+      showContent();
     })
-    .catch((error) => {
-      alert('no pudiste iniciar sesion, revisa tu nombre de usuario y/o contraseña');
+    .catch(() => {
+      alert('revisa tu nombre de usuario y/o contraseña');
+      document.getElementById('logState').innerHTML = 'No existe ususario(a) activo(a)';
     });
 }
-
+//  if login permit close session
+function showContent() {
+  const showing = document.getElementById('contenido');
+  showing.innerHTML = `
+  <p> Bienvenido(a)! </p> 
+  <button id="closing"> Cerrar Sesion </button>
+  `;
+  document.getElementById('closing').addEventListener('click', closingSesion);
+}
 
 // Observer state
 export function stateObserved() {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
+      showContent();
       console.log('existe usuario activo');
-      showContent(user);
+      // user is sign in Sketch
       const displayName = user.displayName;
+      console.log(displayName);
       const email = user.email;
       console.log(email);
       const emailVerified = user.emailVerified;
-      console.log(user.emailVerified);
+      console.log(emailVerified);
       const photoURL = user.photoURL;
+      console.log(photoURL);
       const isAnonymous = user.isAnonymous;
+      console.log(isAnonymous);
       const uid = user.uid;
-      let textVerified = '';
-      if (emailVerified === false) {
-        textVerified = 'Email no verificado';
+      console.log(uid);
+      const providerData = user.providerData;
+      console.log(providerData);
+      if (emailVerified) {
+      // trae a la nueva pagina
       } else {
-        textVerified = 'Email verificado';
+        // closingSesion()
       }
-      let providerData = user.providerData;
-      document.getElementById('logState').innerHTML = `<div id="close"><button id='closeLogin'></button> </div>`;
-      console.log(user);
-    } else {
-      document.getElementById('logState').innerHTML = 'NO Estas logueado!';
     }
   });
 }
+
 stateObserved();
-
-//  if login permit close session
-function showContent(user) {
-  const showing = document.getElementById('contenido');
-  if(user.emailVerified){
-    showing.innerHTML = `
-    <p> Bienvenido(a)! </p> 
-    <button id="closing"> Cerrar Sesion </button>
-    `;
-  document.getElementById('closing').addEventListener('click', closingSesion);
-  }
-}
-
-// Sign Out
-export function closingSesion() {
-
-  firebase.auth().signOut()
-    .then(() => {
-      alert('cerrando sesion...');
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-}
-
-function verified() {
-  const user = firebase.auth().currentUser;
-  user.sendEmailVerification().then(() => {
-    alert('Revisa tu correo para que puedas ingresar satisfactoriamente');
-  }).catch((error) => {
-    alert('correo de verificación no enviado');
-  });
-}
