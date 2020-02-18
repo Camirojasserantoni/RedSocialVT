@@ -1,5 +1,5 @@
 import {
-  register, logIn, createPost, deletePost,
+  register, logIn, createPost,
 }
 
   from './app.js';
@@ -21,7 +21,6 @@ document.getElementById('idGoogle').addEventListener('click', googleLogin);
 
 document.getElementById('btnPost').addEventListener('click', createPost);
 
-document.getElementById('btnDeletePost').addEventListener('click', deletePost);
 
 // llamado de botones
 /* export{ emailLog, passLog}

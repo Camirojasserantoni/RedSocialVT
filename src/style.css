@@ -191,6 +191,12 @@ margin-top: 20px;
   margin: 5px;
   color: #4d1e03;
 }
+
+.newPost{
+border: black 1px solid;
+padding: 5%;
+}
+
 #divToPost{
   margin: auto;
   max-width: 70%;

@@ -88,8 +88,6 @@ stateObserved();
 
 // Initialize Cloud Firestore - Firebase
 const db = firebase.firestore();
-
-
 export function createPost() {
   db.collection('newPost').add({
     email: firebase.auth().currentUser.email,
@@ -104,7 +102,7 @@ export function createPost() {
     });
 }
 
-// reading a new Document //
+// reading a new Document
 const divPost = document.getElementById('divToPost');
 
 db.collection('newPost').onSnapshot((querySnapshot) => {
@@ -112,11 +110,18 @@ db.collection('newPost').onSnapshot((querySnapshot) => {
   querySnapshot.forEach((doc) => {
     console.log(`${doc.id} => ${doc.data()}`);
     divPost.innerHTML += `
+    <div class="newPost">
     ${doc.id}
     ${doc.data().email}
+    <div class="newPost">
     ${doc.data().post}
-    <button id="btnEditPost" class="btn"> Editar Post </button> 
-    <button id="btnDeletePost" class="btn"> Eliminar </button>`;
+    <button id="btnEditPost" class="btn" onclick="Editar('')"> Editar Post </button> 
+    <button id='btnDeletePost-${doc.id}' class="btn")"> Eliminar </button>
+    </div>`;
+    const btnDelete = document.getElementById(`btnDeletePost-${doc.id}`);
+    btnDelete.addEventListener('click', () => {
+      deletePost(doc.id);
+    });
   });
 });
 
