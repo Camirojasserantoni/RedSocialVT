@@ -1,6 +1,13 @@
-// funcionalidad solo exporta funciones
-
-// verify email user
+// function Sign Out
+function closingSesion() {
+  firebase.auth().signOut()
+    .then(() => {
+      alert('cerrando sesion...');
+    })
+    .catch(() => {
+      console.log();
+    });
+}
 function verified() {
   const user = firebase.auth().currentUser;
   user.sendEmailVerification().then(() => {
@@ -9,16 +16,14 @@ function verified() {
     alert('correo de verificación no enviado');
   });
 }
-
-// function Sign Out
-function closingSesion() {
-  firebase.auth().signOut()
-    .then(() => {
-      alert('cerrando sesion...');
-    })
-    .catch(() => {
-      console.log(error);
-    });
+//  if login permit close session
+function showContent() {
+  const showing = document.getElementById('contenido');
+  showing.innerHTML = `
+  <p> Bienvenido(a)! </p> 
+  <button class="btn" id="closing"> Cerrar Sesion </button>
+  `;
+  document.getElementById('closing').addEventListener('click', closingSesion);
 }
 
 // Register a new user
@@ -47,15 +52,6 @@ export function logIn() {
       alert('revisa tu nombre de usuario y/o contraseña');
       document.getElementById('logState').innerHTML = 'No existe ususario(a) activo(a)';
     });
-}
-//  if login permit close session
-function showContent() {
-  const showing = document.getElementById('contenido');
-  showing.innerHTML = `
-  <p> Bienvenido(a)! </p> 
-  <button id="closing"> Cerrar Sesion </button>
-  `;
-  document.getElementById('closing').addEventListener('click', closingSesion);
 }
 
 // Observer state
@@ -89,3 +85,154 @@ export function stateObserved() {
 }
 
 stateObserved();
+
+// Initialize Cloud Firestore - Firebase
+const db = firebase.firestore();
+
+
+export function createPost() {
+  db.collection('newPost').add({
+    email: firebase.auth().currentUser.email,
+    uid: firebase.auth().currentUser.uid,
+    post: document.getElementById('textPost').value,
+  })
+    .then((docRef) => {
+      console.log('Document written with ID: ', docRef.id);
+    })
+    .catch((error) => {
+      console.error('Error adding document: ', error);
+    });
+}
+
+// reading a new Document //
+const divPost = document.getElementById('divToPost');
+
+db.collection('newPost').onSnapshot((querySnapshot) => {
+  divPost.innerHTML = '';
+  querySnapshot.forEach((doc) => {
+    console.log(`${doc.id} => ${doc.data()}`);
+    divPost.innerHTML += `
+    ${doc.id}
+    ${doc.data().email}
+    ${doc.data().post}
+    <button id="btnEditPost" class="btn"> Editar Post </button> 
+    <button id="btnDeletePost" class="btn"> Eliminar </button>`;
+  });
+});
+
+// delete documents
+export function deletePost(id) {
+  db.collection('newPost').doc(id).delete().then(() => {
+    console.log('Document successfully deleted!');
+  })
+    .catch((error) => {
+      console.error('Error removing document: ', error);
+    });
+}
+
+/* const editPost = document.getElementById('divToPost');
+      editPost.innerHTML = `
+  `; */
+
+
+/* import { emailLog, passLog } from './index.js';
+
+// verify email user
+function verified() {
+  const user = firebase.auth().currentUser;
+  user.sendEmailVerification().then(() => {
+    alert('Revisa tu correo para que puedas ingresar satisfactoriamente');
+  }).catch(() => {
+    alert('correo de verificación no enviado');
+  });
+}
+
+// function Sign Out
+function closingSesion() {
+  firebase.auth().signOut()
+    .then(() => {
+      alert('cerrando sesion...');
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+//  if login permit close session
+function showContent() {
+  const showing = document.getElementById('contenido');
+  showing.innerHTML = `
+  <p> Bienvenido(a)! </p>
+  <button id="closing"> Cerrar Sesion </button>
+  `;
+  document.getElementById('closing').addEventListener('click', closingSesion);
+}
+
+// Register a new user
+export function register() {
+  firebase.auth().createUserWithEmailAndPassword(emailR, passwordR)
+    .then(() => {
+      verified();
+    })
+    .catch((error) => {
+      alert('el correo o la contraseña no es valida( la contraseña debe tener 6 caracteres o más)');
+    });
+}
+
+// Login with an user and password
+export function logIn() {
+  firebase.auth().signInWithEmailAndPassword(emailLog, passLog)
+    .then(() => {
+      alert('Iniciaste sesion exitosamente!');
+      showContent();
+    })
+    .catch((error) => {
+      alert('revisa tu nombre de usuario y/o contraseña');
+      document.getElementById('logState').innerHTML = 'No existe ususario(a) activo(a)';
+    });
+}
+
+// Observer state
+export function stateObserved() {
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      showContent();
+      console.log('existe usuario activo');
+      // user is sign in Sketch
+      const displayName = user.displayName;
+      console.log(displayName);
+      const email = user.email;
+      console.log(email);
+      const emailVerified = user.emailVerified;
+      console.log(emailVerified);
+      const photoURL = user.photoURL;
+      console.log(photoURL);
+      const isAnonymous = user.isAnonymous;
+      console.log(isAnonymous);
+      const uid = user.uid;
+      console.log(uid);
+      const providerData = user.providerData;
+      console.log(providerData);
+      if (emailVerified) {
+      // trae a la nueva pagina
+      } else {
+        // closingSesion()
+      }
+    }
+  });
+}
+
+stateObserved();
+
+export const googleLogin = () => {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  provider.addScope('profile');
+  provider.addScope('email');
+
+  firebase.auth().signInWithPopup(provider).then((result) => {
+  // This gives you a Google Access Token.
+    const token = result.credential.accessToken;
+    // The signed-in user info.
+    const user = result.user;
+  });
+};} */

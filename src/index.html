@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css"> 
   <title>Social Network</title>
 </head>
 <body>
@@ -23,8 +23,6 @@
         
         
         <div id="contenido">
-        
-
         </div>
         <h1 id="logState"></h1> 
       </div>
@@ -32,26 +30,34 @@
       <div class="singIn">
         <p>¿Eres nuevo/a?</p> 
         <button id="idGoogle">Continuar con Google</button>
-        <button id="register" class="btn">Registrate</button>
+        <button id="registerHere" class="btn">Registrate Aqui </button>
         <p>¿Olvidaste tu contraseña?</p> <a href="#">Recupérala</a>
       </div> 
-      <div class="signUp">
-        <p> Registrate aqui</p>
-        <input id="emailRegister" type="email" placeholder="Ingrese su email">
-        <input id="passwordRegister"   type="password" placeholder="Ingrese su contraseña">
-        <button id="btnregister">Enviar</button>
-      </div>
 
-    
-    </div>  
-  </div>
-  <footer>
-  </footer> 
+      <div id="divToPost"> </div>
+            
+      <div id="openRegister">
+        <form class="registerUser">
+          <input id="name" placeholder="ingrese su nombre">
+          <input id="emailRegister" type="email" placeholder="Ingrese su email">
+          <input id="passwordRegister"   type="password" placeholder="Ingrese su contraseña">
+          <button id="enviarRegister">Enviar</button>
+        </form>
+     </div>
+      <div id="posting">
+      <input type="text" id="textPost"placeholder="write your post here!" >
+      <button id="btnPost" class="btnPost">Post here</button>
+      
+      </div>  
 
+    </div>
+  </div>   
   
-   <!-- The core Firebase JS SDK is always required and must be listed first -->
+  
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-firestore.js"></script>
 
   <!-- TODO: Add SDKs for Firebase products that you want to use
        https://firebase.google.com/docs/web/setup#available-libraries -->
@@ -74,6 +80,8 @@
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
+
+    
   };
   fireInit();
   </script>
