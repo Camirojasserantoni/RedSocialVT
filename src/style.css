@@ -1,28 +1,26 @@
 * {   
   border: 0;
-  box-sizing: border-box;   
+   
 }
 
 body{
-  background-color: rgb(40, 40, 40);
-}
-
-#root{
-  background-image: url("img/sketchbook.png");
-  background-repeat: no-repeat;
-  max-width: 960px;
+  background-color: #f7d695;
   margin: auto;
   padding: 10px;
   text-align: center;
-  background-size: cover;     
-}
-.header{
-  padding: 50px;
-  margin: 50px;
+  background-size: cover; 
+     
 }
 
+.header{
+  padding: 10px;
+  margin: 20px 20px 20px;
+}
+
+
+
 .tittle1{
-  width: 60%;
+  width: 40%;
 }
 
 .mainMenu{
@@ -37,46 +35,6 @@ align-items: center;
   margin: auto;
   display: flex;
   flex-direction: column;
-}
-
-nav ul li img{
-  display: flex;
-  max-width: 25px;
-  height: auto;
-}
-.homeLogo img{
-  margin: 30px;
-  padding-bottom: 10px;
-  width: 350px;
-  float: left;
-}
-h1 img{
-  padding-top: 10%;
-  max-width: 50%;
-}
-.navBar{
-  background-color: #FFBF43;
-  margin:auto;
-  width: 91%;
-}
-.navBar ul{
-  list-style: none;
-  display: flex;
-  padding: 0;
-  margin: 0;
-}
-nav li{
-  text-align: center;
-  padding: 20px;
-  flex-grow: 1;
-}   
-nav ul li:hover{
-  background-color: rgb(247, 216, 154);
-}   
-nav li a{
-  text-decoration: none;
-  color:black;
-      
 }
 
 main{
@@ -137,17 +95,20 @@ main{
 #idGoogle{
   background-color: transparent;
   border: solid 1px black;
-  display: flex;
-  height: 45px;
+  display: inline-block;
   border-radius: 10px;
-  padding: 20px;
-  margin-left: 5px;
+  padding: 8px;
+}
+
+#iconG{
+padding: 3px;
+
 }
 
 .singIn{
   margin: auto;
   padding: 10px;
-  text-align: -webkit-center;
+  display: contents;
 }
 .singIn p{
   padding: 5px;
@@ -157,51 +118,39 @@ main{
   font-size: 15px;
   margin-top: 5px;
 }
-.businessCard{
-  width: 55%;
-  margin: auto;
-  padding: 20px;
-  border: solid 2px #4d1e03;
-  background-color: antiquewhite;
-  border-radius: 5px;
-  display: flex;
-  flex-wrap: wrap;     
-}
-.businessCard img{
-  margin: 3px;
-  border-radius: 5px;
-  width: 150px;
-  height: 150px;
+
+.openRegister{
+  display: contents;
+
 }
 
-#userPerfil{
-margin-top: 20px;
+#Post{ 
+  border: black 1px solid;
+  margin: 25px;
 }
 
-.idUser{
-  padding-top: 50px;
-  color: black;
-}
-.myPages{
-  margin: 3px;
-}
-.myPages p{
-  display: flex;
-  justify-self: flex-start;
+#newPostUser{
+  border: black 1px solid;
+  display: grid;
   margin: 5px;
-  color: #4d1e03;
 }
 
-.newPost{
-border: black 1px solid;
-padding: 5%;
+#newPostText{
+  font-weight: bold;
+  font-size: medium;
+  color: brown;
+
+}
+
+#btnesPost{
+ margin: 5px;
+display: inline-block;
 }
 
 #divToPost{
   margin: auto;
   max-width: 70%;
   padding: 10px;
-  border: solid 2px #4d1e03;
   border-radius: 5px;
 }
 .basePost{
@@ -212,122 +161,104 @@ padding: 5%;
 .actionButtons{
   margin: auto;
 }
-.images{
-  max-width: 70%;
-  height: auto;
-  border: solid black 2px;
+
+.posting{
+  border: black 1px solid;
+  margin: 25px;
+  display: -webkit-inline-box;
+
 }
-footer{
-  height: 50px;
-  width: 90%;
-  max-width: 850px;
-  margin: auto;
-  padding: 20px;
-  text-align: center;    
+#textPost{
+size: 20px;
+margin: 10px;
+padding: 10px;
+
 }
 
-#topV{
-display: flex;
-}
+#btnPost{
+margin: 10px;
 
-#mobileV{
-display: none;
 }
 
 /*@media to mobile screen */
 
 /* Responsive para celular */
-@media (max-width:700px) {
+@media (max-width:600px) {
 
-  /* Start Screen*/   
-  
-  h1 img{
-      margin-top: 40px;
-      margin-bottom: 0px;
-      padding: 10px;
-      max-width: 60%;
-      float: center;
+  /* Start Screen*/  
+
+  body {
+    width: 100vw; 
   }
-
-  .header{
-      padding: 10px;
-      margin: 5px 10px;
-      display: flex;
-      align-items: center;
-      flex-direction: column;
+  .tittle1{
+    width: 70%;
   }  
+  h1 img{
+    margin-top: 40px;
+    margin-bottom: 0px;
+    padding: 10px;
+    max-width: 70%;
+    float: center;
+  }
   .autentication{
-      margin: auto; 
-      padding: 10px;
-      display: flex;
-      align-items: center;
-      flex-direction: column;
+    margin: auto; 
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
   }
-      
+    
+  .openRegister{
+    display: contents;
+  
+  }
+
+  #idGoogle{
+    background-color: transparent;
+    border: solid 1px black;
+    display: inline-block;
+    border-radius: 10px;
+    padding: 2px;
+  }
+  .posting{
+    border: black 1px solid;
+    margin: 25px;
+    display: -webkit-inline-box;
+  }
   .btn{
-      margin-top: 5px;
-      background-image: url("img/marge-botton.png");
-      background-repeat: no-repeat;
-      max-width: 147px;
-      height: 25px;
-      border-radius: 10px;
+    margin-top: 5px;
+    background-image: url("img/marge-botton.png");
+    background-repeat: no-repeat;
+    max-width: 147px;
+    height: 25px;
+    border-radius: 10px;
   }
 
-  /* Second Screen */
-
-  .homeLogo{
-      padding: 0;
-      margin-bottom: 20px;
-      max-width: 96%;
-      margin: auto;
-      display: flex;
-      flex-direction: column;
+  #Post{ 
+    border: black 1px solid;
+    margin: 2px;
+    width: fit-content;
   }
 
-  .homeLogo img{
-      margin: 70px 30px 5px 20px;
-      padding: 0;
-      max-width: 50%;
-      float: left;
-  }
-  .navBar{
-      margin:22px;
-      width: 95%;
-  }
-  nav li{
-      text-align: center;
-      flex-grow: 1;
-  }    
-
-  nav ul li img{
-      display: flex;
-      max-width: 20px;
-      height: auto;
-    }
- 
-  .businessCard img{
-      margin: 3px;
-      border-radius: 5px;
-      width: 150px;
-      height: 150px;
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
+  #divToPost {
+    margin: auto;
+    padding: 2px;
+    width: fit-content;
+    border: solid 2px black;
+    border-radius: 5px;
+    display: contents;
+  }  
+  #newPostUser{
+    border: black 1px solid;
+    display: grid;
+    margin: 5px;
+    width: fit-content;
   }
 
-  #mobileV{
-      display: flex;
-      margin-left: 10px;
-  }
-
-  .images{
-      width: 70%;
-      height: auto;
-      border: solid black 2px;
-      
-  }    
-
-  #topV{
-      display: none;
-  }
+  #btnesPost{
+    margin: 5px;
+   display: flex;
+   }
 }
+
+  
