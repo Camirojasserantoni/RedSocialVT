@@ -16,38 +16,37 @@
 
     <div class="mainMenu">
       <div id = "autentication" class="autentication">
-        <p>Inicia Sesion aqui</p>
+        <p> Inicia Sesion </p>
         <input id="emailLogIn" class="inputText" type="text" placeholder="Ingresa tu Correo">
         <input id="passwordLogIn" class="inputText" type="password" placeholder="Ingresa tu Contraseña">
         <button id="login" class="btn">Ingresar</button>
         
-        
+        <div class="singIn">
+          <p>¿Eres nuevo/a?</p> 
+          <a id="idGoogle"> <img id="iconG" src="img/google_icon-icons.com_62736.png" height="30px" width="30px">   Continuar con Google</a>
+          <button id="registerHere" class="btn">Registrate Aqui </button>
+          <p>¿Olvidaste tu contraseña?</p> <a href="#">Recupérala</a>
+        </div>
+
+        <div class="openRegister">
+            <p> Registrate  </p>
+            <input id="name" placeholder="ingrese su nombre">
+            <input id="emailRegister" type="email" placeholder="Ingrese su email">
+            <input id="passwordRegister"   type="password" placeholder="Ingrese su contraseña">
+            <button class="btn" id="enviarRegister">Enviar</button>
+       </div>
+
+
         <div id="contenido">
         </div>
         <h1 id="logState"></h1> 
       </div>
 
-      <div class="singIn">
-        <p>¿Eres nuevo/a?</p> 
-        <button id="idGoogle">Continuar con Google</button>
-        <button id="registerHere" class="btn">Registrate Aqui </button>
-        <p>¿Olvidaste tu contraseña?</p> <a href="#">Recupérala</a>
-      </div> 
-
       <div id="divToPost"> </div>
-            
-      <div id="openRegister">
-        <form class="registerUser">
-          <input id="name" placeholder="ingrese su nombre">
-          <input id="emailRegister" type="email" placeholder="Ingrese su email">
-          <input id="passwordRegister"   type="password" placeholder="Ingrese su contraseña">
-          <button id="enviarRegister">Enviar</button>
-        </form>
-     </div>
-      <div id="posting">
-      <input type="text" id="textPost"placeholder="write your post here!" >
-      <button id="btnPost" class="btnPost">Post here</button>
-      
+
+      <div class="posting">
+      <input type="text" id="textPost"placeholder="Say something " >
+      <button id="btnPost" class="btn">Post here</button>
       </div>  
 
     </div>
